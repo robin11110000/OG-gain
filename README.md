@@ -56,16 +56,6 @@ Add these network details to your wallet:
 3. **Choose Strategy** - Pick automated or custom yield strategies
 4. **Earn Rewards** - Watch your assets grow automatically
 
-## Built For
-
-**COOK 04 - The Cookathon by Mantle Network**
-
-Integrating sponsor technologies:
-- 🔗 **Chainlink** - Price feeds and automation
-- 🛡️ **Pimlico** - Account abstraction
-- 🌐 **Orb Labs** - Decentralized computation
-- 📊 **Para** - Infrastructure and analytics
-
 ## Contributing
 
 1. Fork the repository
