@@ -42,21 +42,20 @@ Built-in safety scoring system for all yield opportunities
 ```bash
 git clone https://github.com/robin11110000/og-gain
 cd OG-gain
-yarn install
-yarn dev
+npm install
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Network Configuration
 
-**Current (OG Testnet)**:
-- Network: 0G Newton Testnet  
-- RPC URL: https://rpc-testnet.0g.ai
-- Chain ID: 16600
-- Currency: A0GI
-- Faucet: https://faucet.0g.ai/
-
+Current (0G Galileo Testnet):                                                       │
+  Network: 0G Galileo Testnet                                                           │
+  RPC URL: https://rpc.0g.testnet.node75.org                                            │
+  Chain ID: 80087                                                                       │
+  Currency: OG                                                                          │
+  Explorer: https://chainscan-galileo.0g.ai 
 ## 🎮 How to Use
 
 1. **Connect Wallet** - Link your wallet to start
@@ -67,12 +66,12 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ## 🔮 0G Integration Roadmap
 
 ### Phase 1: Migration
-- [ ] Deploy smart contracts to 0G Chain
-- [ ] Update frontend for 0G network compatibility
+- [x] Deploy smart contracts to 0G Chain
+- [x] Update frontend for 0G network compatibility
 - [ ] Test gasless transactions on 0G
 
 ### Phase 2: AI Enhancement  
-- [ ] Integrate 0G Compute for yield prediction models
+- [x] Integrate 0G Compute for yield prediction models
 - [ ] Use 0G Storage for historical yield data
 - [ ] Implement AI-powered risk assessment
 
