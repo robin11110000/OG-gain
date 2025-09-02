@@ -40,7 +40,7 @@ Built-in safety scoring system for all yield opportunities
 ### Installation
 
 ```bash
-git clone https://github.com/robin11110000/mantle-gain
+git clone https://github.com/robin11110000/og-gain
 cd OG-gain
 yarn install
 yarn dev

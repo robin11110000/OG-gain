@@ -78,15 +78,15 @@ export function PreferencesForm({ onSave }: PreferencesFormProps) {
   
   // Supported chains, protocols, and assets for selection
   const supportedChains = [
-    'Polkadot', 'Kusama', 'Acala', 'Moonbeam', 'Astar', 'Karura', 'Moonriver', 'Parallel'
+    '0G Galileo Testnet'
   ];
   
   const supportedProtocols = [
-    'Acala', 'Moonwell', 'Karura', 'Parallel', 'Stellaswap', 'Zenlink', 'Bifrost'
+    '0G Protocol'
   ];
   
   const supportedAssets = [
-    'DOT', 'KSM', 'ACA', 'GLMR', 'ASTR', 'USDT', 'USDC', 'DAI', 'BTC', 'ETH', 'aUSD'
+    'OG', 'USDC', 'USDT', 'WETH'
   ];
 
   // Set up form with react-hook-form and zod validation

@@ -412,11 +412,7 @@ export class RebalanceExecutionService {
     
     // Base gas costs by chain (in USD)
     const baseGasCosts: Record<string, number> = {
-      'polkadot': 0.05,
-      'kusama': 0.03,
-      'acala': 0.10,
-      'moonbeam': 0.15,
-      'astar': 0.08
+      'og-galileo-testnet': 0.01
     };
     
     // Get base cost for this chain, or default to 0.1 USD
@@ -452,35 +448,8 @@ export class RebalanceExecutionService {
     
     // Base cross-chain transfer costs (in USD)
     const baseBridgeCosts: Record<string, Record<string, number>> = {
-      'polkadot': {
-        'kusama': 0.8,
-        'acala': 0.6,
-        'moonbeam': 1.2,
-        'astar': 0.9
-      },
-      'kusama': {
-        'polkadot': 0.8,
-        'acala': 0.7,
-        'moonbeam': 1.3,
-        'astar': 1.0
-      },
-      'acala': {
-        'polkadot': 0.6,
-        'kusama': 0.7,
-        'moonbeam': 1.1,
-        'astar': 0.8
-      },
-      'moonbeam': {
-        'polkadot': 1.2,
-        'kusama': 1.3,
-        'acala': 1.1,
-        'astar': 0.9
-      },
-      'astar': {
-        'polkadot': 0.9,
-        'kusama': 1.0,
-        'acala': 0.8,
-        'moonbeam': 0.9
+      'og-galileo-testnet': {
+        'ethereum': 1.5
       }
     };
     
@@ -518,68 +487,16 @@ export class RebalanceExecutionService {
     
     const bridgeOptions: BridgeOption[] = [];
     
-    // Common bridges in the Polkadot ecosystem
-    if (
-      ['polkadot', 'kusama', 'acala', 'moonbeam', 'astar'].includes(fromChain.toLowerCase()) &&
-      ['polkadot', 'kusama', 'acala', 'moonbeam', 'astar'].includes(toChain.toLowerCase())
-    ) {
-      // XCM transfers (native to Polkadot ecosystem)
-      bridgeOptions.push({
-        id: 'xcm',
-        name: 'XCM Transfer',
-        logo: '/images/bridges/xcm.png',
-        supportedChains: ['polkadot', 'kusama', 'acala', 'moonbeam', 'astar'],
-        supportedAssets: ['DOT', 'KSM', 'USDT', 'USDC', 'ACA', 'GLMR', 'ASTR'],
-        estimatedTime: 10,
-        fee: 0.5,
-        gasTokens: ['DOT', 'KSM']
-      });
-      
-      // Acala Bridge
-      if (
-        ['acala', 'polkadot'].includes(fromChain.toLowerCase()) ||
-        ['acala', 'polkadot'].includes(toChain.toLowerCase())
-      ) {
-        bridgeOptions.push({
-          id: 'acala',
-          name: 'Acala Bridge',
-          logo: '/images/bridges/acala.png',
-          supportedChains: ['polkadot', 'acala', 'karura'],
-          supportedAssets: ['DOT', 'ACA', 'LDOT', 'aUSD'],
-          estimatedTime: 15,
-          fee: 0.6,
-          gasTokens: ['DOT', 'ACA']
-        });
-      }
-      
-      // Moonbeam Bridge
-      if (
-        ['moonbeam', 'polkadot'].includes(fromChain.toLowerCase()) ||
-        ['moonbeam', 'polkadot'].includes(toChain.toLowerCase())
-      ) {
-        bridgeOptions.push({
-          id: 'moonbeam',
-          name: 'Moonbeam Bridge',
-          logo: '/images/bridges/moonbeam.png',
-          supportedChains: ['polkadot', 'moonbeam'],
-          supportedAssets: ['DOT', 'GLMR', 'USDC', 'USDT'],
-          estimatedTime: 20,
-          fee: 0.8,
-          gasTokens: ['DOT', 'GLMR']
-        });
-      }
-    }
-    
     // Add external bridges connecting to other ecosystems
     bridgeOptions.push({
       id: 'multichain',
       name: 'Multichain',
       logo: '/images/bridges/multichain.png',
-      supportedChains: ['polkadot', 'kusama', 'moonbeam', 'ethereum', 'binance-smart-chain'],
-      supportedAssets: ['DOT', 'KSM', 'USDT', 'USDC', 'ETH', 'BNB', 'GLMR'],
+      supportedChains: ['og-galileo-testnet', 'ethereum'],
+      supportedAssets: ['OG', 'USDT', 'USDC', 'ETH', 'BNB'],
       estimatedTime: 30,
       fee: 2.0,
-      gasTokens: ['DOT', 'ETH', 'BNB', 'GLMR']
+      gasTokens: ['OG', 'ETH']
     });
     
     // Filter options by asset support

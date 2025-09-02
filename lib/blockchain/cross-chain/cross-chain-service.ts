@@ -37,8 +37,12 @@ const CHAIN_TOKENS: Record<string, ChainToken[]> = {
     { chainId: 'polygon', address: '0xc2132D05D31c914a87C6611C10748AEb04B58e8F', name: 'Tether USD', symbol: 'USDT', decimals: 6, priceUsd: 1 },
     { chainId: 'polygon', address: '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063', name: 'Dai Stablecoin', symbol: 'DAI', decimals: 18, priceUsd: 1 },
     { chainId: 'polygon', address: '0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6', name: 'Wrapped Bitcoin', symbol: 'WBTC', decimals: 8, priceUsd: 64000 },
+  ],
+  'ogGalileo': [
+    { chainId: 'ogGalileo', address: '0x... (USDC address on 0G)', name: 'USD Coin', symbol: 'USDC', decimals: 6, priceUsd: 1 },
+    { chainId: 'ogGalileo', address: '0x... (USDT address on 0G)', name: 'Tether USD', symbol: 'USDT', decimals: 6, priceUsd: 1 },
+    { chainId: 'ogGalileo', address: '0x... (WETH address on 0G)', name: 'Wrapped Ether', symbol: 'WETH', decimals: 18, priceUsd: 3500 },
   ]
-  // Additional chains would be defined here
 };
 
 // In-memory store for transfer history (would be replaced with database in production)
@@ -97,7 +101,8 @@ export class CrossChainService {
       // Mock price data - in production would come from price oracle
       const priceUsd = chainId === 'ethereum' ? 3500 : 
                        chainId === 'polygon' ? 0.6 : 
-                       chainId === 'avalanche' ? 35 : 20;
+                       chainId === 'avalanche' ? 35 : 
+                       chainId === 'ogGalileo' ? 0.1 : 20; // Assuming 0.1 USD for OG token
       
       const formattedBalance = ethers.utils.formatUnits(balance, chain.nativeCurrency.decimals);
       const valueUsd = parseFloat(formattedBalance) * priceUsd;
@@ -187,7 +192,8 @@ export class CrossChainService {
               // Mock price data
               priceUsd: chain.id === 'ethereum' ? 3500 : 
                         chain.id === 'polygon' ? 0.6 : 
-                        chain.id === 'avalanche' ? 35 : 20
+                        chain.id === 'avalanche' ? 35 : 
+                        chain.id === 'ogGalileo' ? 0.1 : 20
             },
             ...tokens
           ];

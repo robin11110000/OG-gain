@@ -1,4 +1,3 @@
-import { getPolkadotApi } from './polkadot-api';
 import { getProvider } from './contract-utils';
 import { ethers } from 'ethers';
 
@@ -15,81 +14,6 @@ export interface ChainInfo {
   nodesCount?: number;
   isTestnet: boolean;
   explorerUrl: string;
-}
-
-/**
- * Fetch current chain data from Polkadot
- * @returns ChainInfo object with current chain data
- */
-export async function fetchPolkadotChainData(): Promise<ChainInfo> {
-  try {
-    // Get the Polkadot API
-    const api = await getPolkadotApi();
-    
-    // Fetch basic chain info
-    const [chain, properties, health, blockNumber, finalizedHead, finalizedNumber] = await Promise.all([
-      api.rpc.system.chain(),
-      api.rpc.system.properties(),
-      api.rpc.system.health(),
-      api.rpc.chain.getHeader(),
-      api.rpc.chain.getFinalizedHead(),
-      api.rpc.chain.getHeader(await api.rpc.chain.getFinalizedHead()),
-    ]);
-    
-    // Extract token info
-    const tokenSymbol = properties.tokenSymbol.unwrapOr(['DOT'])[0].toString();
-    const tokenDecimalValue = properties.tokenDecimals.unwrapOr([10])[0];
-    const tokenDecimals = typeof tokenDecimalValue === 'object' && 'toNumber' in tokenDecimalValue ? 
-      tokenDecimalValue.toNumber() : 
-      Number(tokenDecimalValue);
-    
-    // Determine if testnet
-    const chainName = chain.toString().toLowerCase();
-    const isTestnet = 
-      chainName.includes('test') || 
-      chainName.includes('dev') || 
-      chainName === 'westend' ||
-      chainName === 'moonbase';
-    
-    // Generate explorer URL
-    let explorerUrl = 'https://polkadot.subscan.io';
-    
-    if (chainName === 'kusama') {
-      explorerUrl = 'https://kusama.subscan.io';
-    } else if (chainName === 'westend') {
-      explorerUrl = 'https://westend.subscan.io';
-    } else if (chainName.includes('moonbeam')) {
-      explorerUrl = 'https://moonbeam.subscan.io';
-    } else if (chainName.includes('moonriver')) {
-      explorerUrl = 'https://moonriver.subscan.io';
-    } else if (chainName.includes('moonbase')) {
-      explorerUrl = 'https://moonbase.subscan.io';
-    }
-    
-    // Return chain info
-    return {
-      name: chain.toString(),
-      tokenSymbol,
-      tokenDecimals,
-      blockHeight: blockNumber.number.toNumber(),
-      finalized: finalizedNumber.number.toNumber(),
-      nodesCount: health.peers.toNumber(),
-      isTestnet,
-      explorerUrl
-    };
-  } catch (error) {
-    console.error('Error fetching Polkadot chain data:', error);
-    
-    // Return default values in case of error
-    return {
-      name: 'Polkadot',
-      tokenSymbol: 'DOT',
-      tokenDecimals: 10,
-      blockHeight: 0,
-      isTestnet: false,
-      explorerUrl: 'https://polkadot.subscan.io'
-    };
-  }
 }
 
 /**
@@ -141,12 +65,7 @@ export async function fetchTokenPrice(token: string): Promise<number> {
  */
 function mapTokenToId(token: string): string {
   const tokenMap: Record<string, string> = {
-    'DOT': 'polkadot',
-    'KSM': 'kusama',
-    'GLMR': 'moonbeam',
-    'MOVR': 'moonriver',
-    'ACA': 'acala',
-    'ASTR': 'astar',
+    'OG': '0g-storage',
   };
   
   return tokenMap[token.toUpperCase()] || token.toLowerCase();
@@ -193,13 +112,6 @@ export function calculateEstimatedEarnings(amount: number, apy: number, duration
  */
 export function getSupportedChains(): Array<{id: string, name: string, isTestnet: boolean}> {
   return [
-    { id: 'polkadot', name: 'Polkadot', isTestnet: false },
-    { id: 'kusama', name: 'Kusama', isTestnet: false },
-    { id: 'moonbeam', name: 'Moonbeam', isTestnet: false },
-    { id: 'moonriver', name: 'Moonriver', isTestnet: false },
-    { id: 'acala', name: 'Acala', isTestnet: false },
-    { id: 'astar', name: 'Astar', isTestnet: false },
-    { id: 'westend', name: 'Westend', isTestnet: true },
-    { id: 'moonbase', name: 'Moonbase Alpha', isTestnet: true },
+    { id: 'og-galileo', name: '0G Galileo Testnet', isTestnet: true },
   ];
 }

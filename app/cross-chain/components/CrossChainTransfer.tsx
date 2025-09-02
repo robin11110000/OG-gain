@@ -15,8 +15,8 @@ interface CrossChainTransferProps {
 }
 
 export function CrossChainTransfer({ address, onTransferComplete }: CrossChainTransferProps) {
-  const [sourceChain, setSourceChain] = useState('ethereum');
-  const [targetChain, setTargetChain] = useState('polygon');
+  const [sourceChain, setSourceChain] = useState('ogGalileo');
+  const [targetChain, setTargetChain] = useState('ogGalileo');
   const [asset, setAsset] = useState('USDC');
   const [amount, setAmount] = useState('');
   const [transferring, setTransferring] = useState(false);
@@ -24,11 +24,7 @@ export function CrossChainTransfer({ address, onTransferComplete }: CrossChainTr
   const [transferSuccess, setTransferSuccess] = useState(false);
   
   const supportedChains = [
-    { id: 'ethereum', name: 'Ethereum', logo: '/assets/chains/ethereum.svg' },
-    { id: 'polygon', name: 'Polygon', logo: '/assets/chains/polygon.svg' },
-    { id: 'arbitrum', name: 'Arbitrum', logo: '/assets/chains/arbitrum.svg' },
-    { id: 'optimism', name: 'Optimism', logo: '/assets/chains/optimism.svg' },
-    { id: 'base', name: 'Base', logo: '/assets/chains/base.svg' },
+    { id: 'ogGalileo', name: '0G Galileo Testnet', logo: '/assets/chains/0g.svg' },
   ];
   
   const supportedAssets = [

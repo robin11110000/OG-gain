@@ -109,6 +109,18 @@ export const supportedChains: Chain[] = [
       decimals: 18
     },
     logo: '/images/chains/avalanche.svg'
+  },
+  {
+    id: 'ogGalileo',
+    name: '0G Galileo Testnet',
+    rpcUrl: 'https://rpc.0g.testnet.node75.org',
+    explorer: 'https://chainscan-galileo.0g.ai',
+    nativeCurrency: {
+      name: 'OG',
+      symbol: 'OG',
+      decimals: 18
+    },
+    logo: '/images/chains/0g.svg'
   }
 ];
 
@@ -127,7 +139,7 @@ export function isChainSupported(chainId: string): boolean {
 
 export function getEthereumCompatibleChains(): Chain[] {
   return supportedChains.filter(chain => [
-    'ethereum', 'arbitrum', 'polygon', 'optimism', 'avalanche', 'moonbeam', 'moonriver'
+    'ethereum', 'arbitrum', 'polygon', 'optimism', 'avalanche', 'moonbeam', 'moonriver', 'ogGalileo'
   ].includes(chain.id));
 }
 
@@ -147,5 +159,6 @@ export const chainIcons: Record<string, string> = {
   astar: '/images/chains/astar.svg',
   moonbeam: '/images/chains/moonbeam.svg',
   moonriver: '/images/chains/moonriver.svg',
-  avalanche: '/images/chains/avalanche.svg'
+  avalanche: '/images/chains/avalanche.svg',
+  ogGalileo: '/images/chains/0g.svg'
 };

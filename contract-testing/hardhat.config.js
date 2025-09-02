@@ -1,4 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox");
+require('dotenv').config({ path: '../.env.local' });
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -27,6 +28,11 @@ module.exports = {
   networks: {
     hardhat: {
       chainId: 1337
+    },
+    ogGalileo: {
+      url: process.env.NEXT_PUBLIC_OG_GALILEO_RPC_URL || "",
+      // Replace with your own private key
+      // accounts: ['YOUR_PRIVATE_KEY'] 
     }
   }
 };

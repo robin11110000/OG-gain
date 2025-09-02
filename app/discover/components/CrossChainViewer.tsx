@@ -96,187 +96,25 @@ export function CrossChainViewer() {
   const getMockChainData = (): ChainData[] => {
     return [
       {
-        id: 'ethereum',
-        name: 'Ethereum',
-        tvl: 425000000,
-        numberOfStrategies: 28,
-        averageApy: 6.8,
-        highestApy: 42.5,
-        color: '#627EEA',
-        logoUrl: '/images/chains/ethereum.svg',
+        id: 'ogGalileo',
+        name: '0G Galileo Testnet',
+        tvl: 10000000, // Mock TVL
+        numberOfStrategies: 5, // Mock number of strategies
+        averageApy: 15.0, // Mock average APY
+        highestApy: 50.0, // Mock highest APY
+        color: '#000000', // Black color for 0G
+        logoUrl: '/images/chains/0g.svg',
         strategyTypes: {
-          lending: 43,
-          staking: 12,
-          farming: 30,
-          lp: 15
-        },
-        topAssets: [
-          { symbol: 'ETH', percentage: 35 },
-          { symbol: 'USDC', percentage: 28 },
-          { symbol: 'DAI', percentage: 18 },
-          { symbol: 'WBTC', percentage: 12 },
-          { symbol: 'Other', percentage: 7 }
-        ]
-      },
-      {
-        id: 'polkadot',
-        name: 'Polkadot',
-        tvl: 120000000,
-        numberOfStrategies: 15,
-        averageApy: 12.3,
-        highestApy: 38.7,
-        color: '#E6007A',
-        logoUrl: '/images/chains/polkadot.svg',
-        strategyTypes: {
-          lending: 25,
-          staking: 45,
+          lending: 20,
+          staking: 50,
           farming: 20,
           lp: 10
         },
         topAssets: [
-          { symbol: 'DOT', percentage: 62 },
-          { symbol: 'USDT', percentage: 15 },
-          { symbol: 'USDC', percentage: 12 },
-          { symbol: 'ACA', percentage: 8 },
-          { symbol: 'Other', percentage: 3 }
-        ]
-      },
-      {
-        id: 'arbitrum',
-        name: 'Arbitrum',
-        tvl: 215000000,
-        numberOfStrategies: 22,
-        averageApy: 9.4,
-        highestApy: 48.2,
-        color: '#28A0F0',
-        logoUrl: '/images/chains/arbitrum.svg',
-        strategyTypes: {
-          lending: 30,
-          staking: 15,
-          farming: 35,
-          lp: 20
-        },
-        topAssets: [
-          { symbol: 'ETH', percentage: 42 },
-          { symbol: 'USDC', percentage: 22 },
-          { symbol: 'ARB', percentage: 15 },
-          { symbol: 'GMX', percentage: 12 },
-          { symbol: 'Other', percentage: 9 }
-        ]
-      },
-      {
-        id: 'moonbeam',
-        name: 'Moonbeam',
-        tvl: 78000000,
-        numberOfStrategies: 12,
-        averageApy: 14.8,
-        highestApy: 52.7,
-        color: '#53CBC8',
-        logoUrl: '/images/chains/moonbeam.svg',
-        strategyTypes: {
-          lending: 20,
-          staking: 40,
-          farming: 30,
-          lp: 10
-        },
-        topAssets: [
-          { symbol: 'GLMR', percentage: 55 },
+          { symbol: 'OG', percentage: 60 },
           { symbol: 'USDC', percentage: 20 },
-          { symbol: 'ETH', percentage: 15 },
-          { symbol: 'STELLA', percentage: 7 },
-          { symbol: 'Other', percentage: 3 }
-        ]
-      },
-      {
-        id: 'astar',
-        name: 'Astar',
-        tvl: 45000000,
-        numberOfStrategies: 10,
-        averageApy: 18.2,
-        highestApy: 65.4,
-        color: '#1B6DC1',
-        logoUrl: '/images/chains/astar.svg',
-        strategyTypes: {
-          lending: 15,
-          staking: 35,
-          farming: 40,
-          lp: 10
-        },
-        topAssets: [
-          { symbol: 'ASTR', percentage: 58 },
-          { symbol: 'USDT', percentage: 18 },
-          { symbol: 'USDC', percentage: 12 },
-          { symbol: 'DOT', percentage: 8 },
-          { symbol: 'Other', percentage: 4 }
-        ]
-      },
-      {
-        id: 'polygon',
-        name: 'Polygon',
-        tvl: 180000000,
-        numberOfStrategies: 24,
-        averageApy: 8.6,
-        highestApy: 45.3,
-        color: '#8247E5',
-        logoUrl: '/images/chains/polygon.svg',
-        strategyTypes: {
-          lending: 35,
-          staking: 20,
-          farming: 30,
-          lp: 15
-        },
-        topAssets: [
-          { symbol: 'MATIC', percentage: 38 },
-          { symbol: 'USDC', percentage: 25 },
-          { symbol: 'USDT', percentage: 18 },
-          { symbol: 'WETH', percentage: 12 },
-          { symbol: 'Other', percentage: 7 }
-        ]
-      },
-      {
-        id: 'moonriver',
-        name: 'Moonriver',
-        tvl: 32000000,
-        numberOfStrategies: 8,
-        averageApy: 22.5,
-        highestApy: 78.9,
-        color: '#F2AB1C',
-        logoUrl: '/images/chains/moonriver.svg',
-        strategyTypes: {
-          lending: 10,
-          staking: 30,
-          farming: 50,
-          lp: 10
-        },
-        topAssets: [
-          { symbol: 'MOVR', percentage: 62 },
-          { symbol: 'USDC', percentage: 18 },
-          { symbol: 'SOLAR', percentage: 10 },
-          { symbol: 'USDT', percentage: 8 },
-          { symbol: 'Other', percentage: 2 }
-        ]
-      },
-      {
-        id: 'avalanche',
-        name: 'Avalanche',
-        tvl: 150000000,
-        numberOfStrategies: 18,
-        averageApy: 11.2,
-        highestApy: 51.8,
-        color: '#E84142',
-        logoUrl: '/images/chains/avalanche.svg',
-        strategyTypes: {
-          lending: 30,
-          staking: 25,
-          farming: 30,
-          lp: 15
-        },
-        topAssets: [
-          { symbol: 'AVAX', percentage: 42 },
-          { symbol: 'USDC', percentage: 25 },
           { symbol: 'USDT', percentage: 15 },
-          { symbol: 'JOE', percentage: 8 },
-          { symbol: 'Other', percentage: 10 }
+          { symbol: 'WETH', percentage: 5 }
         ]
       }
     ];
